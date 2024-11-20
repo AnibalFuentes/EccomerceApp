@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.3.4",
+    "@files-ui/react": "^1.2.4",
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^5.22.0",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -23,6 +24,7 @@
     "cmdk": "^1.0.0",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
+    "next-cloudinary": "^6.16.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
