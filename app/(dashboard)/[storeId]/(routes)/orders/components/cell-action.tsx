@@ -1,6 +1,6 @@
 "use client";
 
-import { BillboardColumn } from "./columns";
+import { OrderColumn } from "./columns";
 
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 
@@ -21,7 +21,7 @@ import axios from "axios";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: OrderColumn;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

@@ -35,8 +35,7 @@ const formSchema = z.object({
 type SettingsFormValues = z.infer<typeof formSchema>;
 
 const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
-
-    const origin =useOrigin()
+  const origin = useOrigin();
   const params = useParams();
   const router = useRouter();
 
@@ -57,7 +56,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       toast.success("Store settings updated");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Ocurrió un error");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -73,7 +72,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Ocurrió un error inesperado al eliminar la tienda");
+      toast.error("Something went wrong. inesperado al eliminar la tienda");
     } finally {
       setLoading(false);
       setOpen(false);

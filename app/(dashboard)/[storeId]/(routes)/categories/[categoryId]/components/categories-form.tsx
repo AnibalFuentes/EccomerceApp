@@ -87,7 +87,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
       toast.success(toastMessage);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Ocurrió un error");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import { BillboardColumn } from "./columns";
+import { ProductColumn } from "./columns";
 
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 
@@ -21,7 +21,7 @@ import axios from "axios";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: ProductColumn;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -39,14 +39,14 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/products/${data.id}`);
       router.refresh();
 
-      toast.success("Billboard deleted");
+      toast.success("Product deleted");
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("Something went wrong. inesperado al eliminar  ");
+      toast.error("Something went wrong  ");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -77,7 +77,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/products/${data.id}`)
             }
           >
             <Edit className="mr-2 w-4 h-4" />
