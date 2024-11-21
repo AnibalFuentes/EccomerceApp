@@ -6,14 +6,15 @@ import { Separator } from "@/components/ui/separator";
 // import { Billboard } from "@prisma/client";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { BillboardColumn, columns } from "./columns";
+
 import { DataTable } from "./data-table";
 import ApiList from "@/components/ui/api-list";
+import { CategoryColumn, columns } from "./columns";
 
-interface BillboardClientsProps {
-  data: BillboardColumn[];
+interface CategoryClientsProps {
+  data: CategoryColumn[];
 }
-const BillboardClient: React.FC<BillboardClientsProps> = ({ data }) => {
+const CategoryClient: React.FC<CategoryClientsProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -21,23 +22,23 @@ const BillboardClient: React.FC<BillboardClientsProps> = ({ data }) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Billboards (${data.length})`}
-          description="Manage billboards for you store"
+          title={`Categories (${data.length})`}
+          description="Manage categories for you store"
         />
         <Button
-          onClick={() => router.push(`/${params.storeId}/billboards/new`)}
+          onClick={() => router.push(`/${params.storeId}/categories/new`)}
         >
           <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="label" columns={columns} data={data} />
-      <Heading title="API" description="Api calls for Billboards "/>
-      <Separator/>
-      <ApiList entityName="billboards" entityIdName="billboardId"/>
+      <DataTable searchKey="name" columns={columns} data={data} />
+      <Heading title="API" description="Api calls for categories " />
+      <Separator />
+      <ApiList entityName="categories" entityIdName="categoryId" />
     </>
   );
 };
 
-export default BillboardClient;
+export default CategoryClient;
