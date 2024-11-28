@@ -3,16 +3,23 @@
 import prismadb from "@/lib/prismadb";
 import BillboardsForm from "./components/billboards-form";
 
-// Componente server-side asincrónico
-const BillboardPage = async ({ params }: { params: { billboardId: string } }) => {
+interface BillboardPageProps {
+  params: {
+    billboardId: string;
+  };
+}
+
+const BillboardPage = async ({ params }: BillboardPageProps) => {
+  const { billboardId } = params; // Desestructuración para facilitar el uso del parámetro
+
   // Consulta asincrónica para obtener los datos del billboard
   const billboard = await prismadb.billboard.findUnique({
     where: {
-      id: params.billboardId, // id del parámetro dinámico
+      id: billboardId, // Usamos el valor de billboardId aquí
     },
   });
 
-  // Verifica si se encontró el billboard
+  // Verifica si el billboard existe
   if (!billboard) {
     return <div>No se encontró el cartel.</div>;
   }
