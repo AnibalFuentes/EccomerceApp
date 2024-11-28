@@ -3,6 +3,7 @@
 import prismadb from "@/lib/prismadb";
 import BillboardsForm from "./components/billboards-form";
 
+// Asegúrate de que el tipo sea correcto para `params`
 interface BillboardPageProps {
   params: {
     billboardId: string;
@@ -10,16 +11,17 @@ interface BillboardPageProps {
 }
 
 const BillboardPage = async ({ params }: BillboardPageProps) => {
-  const { billboardId } = params; // Desestructuración para facilitar el uso del parámetro
+  // Desestructuramos billboardId para un acceso más directo
+  const { billboardId } = params;
 
-  // Consulta asincrónica para obtener los datos del billboard
+  // Consulta asincrónica para obtener los datos del cartel
   const billboard = await prismadb.billboard.findUnique({
     where: {
-      id: billboardId, // Usamos el valor de billboardId aquí
+      id: billboardId, // Usamos el id del parámetro
     },
   });
 
-  // Verifica si el billboard existe
+  // Verifica si se encontró el billboard
   if (!billboard) {
     return <div>No se encontró el cartel.</div>;
   }
