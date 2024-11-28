@@ -6,6 +6,7 @@ const BillboardPage = async ({
 }: {
   params: { billboardId: string };
 }) => {
+  // Consulta asincrónica para obtener los datos del billboard
   const billboard = await prismadb.billboard.findUnique({
     where: {
       id: params.billboardId,
@@ -13,14 +14,12 @@ const BillboardPage = async ({
   });
 
   return (
-  <div className="flex-col ">
-    <div className="flex-1 space-y-4 p-8 pt-6">
-        <BillboardsForm initialData={billboard}/>
-
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <BillboardsForm initialData={billboard} />
+      </div>
     </div>
-
-  </div>
-)
+  );
 };
 
 export default BillboardPage;
