@@ -8,9 +8,14 @@ const BillboardPage = async ({ params }: { params: { billboardId: string } }) =>
   // Consulta asincrónica para obtener los datos del billboard
   const billboard = await prismadb.billboard.findUnique({
     where: {
-      id: params.billboardId,
+      id: params.billboardId, // id del parámetro dinámico
     },
   });
+
+  // Verifica si se encontró el billboard
+  if (!billboard) {
+    return <div>No se encontró el cartel.</div>;
+  }
 
   // Renderizado del componente con datos cargados
   return (
